@@ -207,6 +207,7 @@ public:
     intersects_term_t(compile_env_t *env, const protob_t<const Term> &term)
         : geo_obj_or_seq_op_term_t(env, term, poly_type_t::FILTER, argspec_t(2)) { }
 private:
+    bool is_deterministic() const { return true; }
     scoped_ptr_t<val_t> obj_eval_geo(
             scope_env_t *env, args_t *args, const scoped_ptr_t<val_t> &v0) const {
         scoped_ptr_t<val_t> other = args->arg(env, 1);
